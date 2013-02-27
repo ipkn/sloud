@@ -1,0 +1,24 @@
+extends layout
+
+block content
+	#container
+		div(class="navbar")
+			div(class="navbar-inner")
+				a(class="brand", href="#")= title
+				p(class="nav navbar-text")= "Unnamed"
+				button(id="refreshBtn", class="btn")= "Refresh"
+				button(class="btn disabled")= "Load from Dropbox ..."
+		div(class="container-fluid")
+			div(class="row-fluid")
+				div(class="span5")
+					textarea(id="edit", class="edit")
+				div(class="span7 renderparent")
+					#slideNavButtons
+						button(id="prevSlide", class="btn")= "Prev"
+						button(id="nextSlide", class="btn")= "Next"
+					div(class="renderbase",data-width="600",data-height="400")
+	!=js("Markdown.Converter.js")
+	!=js('parser.js')
+	!=js('sample.js')
+	!=js('impress.js')
+	!=js('edit.js')

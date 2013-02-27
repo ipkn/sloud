@@ -1,0 +1,24 @@
+:title
+
+# Sample slide
+
+---
+
+# title1
+
+some contents
+
+---
+
+# title2
+
+ - item
+ - item
+ - item
+ - item
+
+---
+
+# Math symbols
+
+ - $\over{x}{y}$
