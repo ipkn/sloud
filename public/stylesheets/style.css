@@ -28,6 +28,19 @@ html, body {
 	/*border: 1px solid grey;*/
 	padding: 20px;
 }
+.editmode .slide {
+	width: 580px;
+	height: 380px;
+	/*border: 1px solid grey;*/
+	padding: 10px;
+}
+
+.slide {
+	width: 960px;
+	height: 660px;
+	/*border: 1px solid grey;*/
+	padding: 20px;
+}
 
 .slideborder {
 	border: 1px solid grey;

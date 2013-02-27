@@ -8,7 +8,7 @@ nextSlide = ->
 prevSlide = ->
 	if impressAPI?
 		impressAPI.prev()
-updateRender = ->
+updateRender = (editMode=true)->
 	[globalOptions, slides] = window.parse($("#edit").val())
 	build = []
 	x=0
@@ -53,7 +53,7 @@ updateRender = ->
 		.appendTo($(".renderbase").parent())
 
 	impressAPI = impress("impress#{currentPresentationRenderId}")
-	impressAPI.init(true)
+	impressAPI.init(editMode)
 	$("#prevSlide")
 		.unbind()
 		.click(prevSlide)
@@ -71,6 +71,21 @@ $(document).ready ->
 	$(".renderparent")
 		.height(fixedHeight)
 	updateRender()
+	$("#checkpreviewmode")
+		.click ->
+			if not $(this).is(":checked")
+				$("#leftpane").show()
+				$("#rightpane").removeClass('span12')
+				$("#rightpane").addClass('span7')
+				updateRender(true)
+				$(".render").addClass('editmode')
+			else
+				$("#leftpane").hide()
+				$("#rightpane").removeClass('span7')
+				$("#rightpane").addClass('span12')
+				updateRender(true)
+				$(".render").removeClass('editmode')
+
 	$("#refreshBtn")
 		.click(->
 			updateRender()

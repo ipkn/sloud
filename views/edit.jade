@@ -6,17 +6,21 @@ block content
 			div(class="navbar-inner")
 				a(class="brand", href="#")= title
 				p(class="nav navbar-text")= "Unnamed"
+				form(class="nav navbar-text form-inline")
+					label(class="checkbox")
+						input(id="checkpreviewmode",type="checkbox")
+						span="Preview"
 				button(id="refreshBtn", class="btn")= "Refresh"
 				button(class="btn disabled")= "Load from Dropbox ..."
 		div(class="container-fluid")
 			div(class="row-fluid")
-				div(class="span5")
+				#leftpane(class="span5")
 					textarea(id="edit", class="edit")
-				div(class="span7 renderparent")
+				#rightpane(class="span7 renderparent")
 					#slideNavButtons
 						button(id="prevSlide", class="btn")= "Prev"
 						button(id="nextSlide", class="btn")= "Next"
-					div(class="renderbase",data-width="600",data-height="400")
+					div(class="renderbase editmode",data-width="600",data-height="400")
 	!=js("Markdown.Converter.js")
 	!=js('parser.js')
 	!=js('sample.js')
