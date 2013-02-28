@@ -8,7 +8,7 @@ window.sample =	"""
 </style>
 
 # Sample slide
-# Subtitle
+## Subtitle
 
 ---
 :class:slideborder
