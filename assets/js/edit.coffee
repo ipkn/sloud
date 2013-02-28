@@ -54,6 +54,7 @@ updateRender = (editMode=true)->
 
 	impressAPI = impress("impress#{currentPresentationRenderId}")
 	impressAPI.init(editMode)
+	MathJax.Hub.Queue(["Typeset",MathJax.Hub,"impress#{currentPresentationRenderId}"])
 	$("#prevSlide")
 		.unbind()
 		.click(prevSlide)
