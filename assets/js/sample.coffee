@@ -8,11 +8,12 @@ window.sample =	"""
 </style>
 
 # Sample slide
+# Subtitle
 
 ---
 :class:slideborder
 
-# title1
+# Title1
 
 some contents
 
@@ -20,7 +21,7 @@ some contents
 
 ---
 
-# title2
+# Title2
 
  - item
  - item
@@ -33,9 +34,13 @@ some contents
 
  - \\\\(x \\over y\\\\)
 
+or some equation:
+
+$$ \\forall x \\in X, \\quad \\exists y \\leq \\epsilon $$
+
 ---
 :x:2048 y:2000 scale:4
-#something different?
+# Something different?
 
  - used [impress.js](http://bartaz.github.com/impress.js)
 """
