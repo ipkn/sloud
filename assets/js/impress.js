@@ -149,8 +149,8 @@
     // `computeWindowScale` counts the scale factor between window size and size
     // defined for the presentation in the config.
     var computeWindowScale = function ( config ) {
-        var hScale = window.innerHeight / config.height,
-            wScale = window.innerWidth / config.width,
+        var hScale = config.screenHeight / config.height,
+            wScale = config.screenWidth / config.width,
             scale = hScale > wScale ? wScale : hScale;
         
         if (config.maxScale && scale > config.maxScale) {
@@ -346,6 +346,8 @@
             config = {
                 width: toNumber( rootData.width, defaults.width ),
                 height: toNumber( rootData.height, defaults.height ),
+                screenWidth: toNumber( rootData.screenWidth, window.innerWidth ),
+                screenHeight: toNumber( rootData.screenHeight, window.innerHeight ),
                 maxScale: toNumber( rootData.maxScale, defaults.maxScale ),
                 minScale: toNumber( rootData.minScale, defaults.minScale ),                
                 perspective: toNumber( rootData.perspective, defaults.perspective ),

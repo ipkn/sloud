@@ -1,29 +1,23 @@
 environment = exports ? window
 
 environment.parse = (input)->
-	rootOption = {}
-	if input.length > 2 and input[0] == ':' and input[1] == ':'
-			input = input.split('\n')
-			for optionKV in input.shift().substring(2).split(' ')
-				res = optionKV.split(':')
-				if res.length == 2
-					[k,v] = res
-					rootOption[k] = v
-				else
-					rootOption[optionKV] = true
-			input = input.join('\n')
+	rootOptions = {}
 
 	slides = input.split('\n---\n')
 	parsed = for slide in slides
 		options = []
-		if slide[0] == ':'
+		while slide[0] == ':'
 			slide = slide.split('\n')
 			options = {}
 			for optionKV in slide.shift().substring(1).split(' ')
 				res = optionKV.split(':')
-				if res.length == 2
-					[k,v] = res
-					options[k] = v
+				if res[0] == 'global'
+					if res.length >= 3
+						rootOptions[res[1]] = res[2]
+					else
+						rootOptions[res[1]] = true
+				else if res.length >= 2
+					options[res[0]] = res[1]
 				else
 					options[optionKV] = true
 			slide = slide.join('\n')
@@ -31,4 +25,4 @@ environment.parse = (input)->
 		#console.log slide
 		#console.log '********************************************************************************'
 		[options, slide]
-	[rootOption, parsed]
+	[rootOptions, parsed]

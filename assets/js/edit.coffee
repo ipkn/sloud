@@ -18,8 +18,16 @@ updateRender = (editMode=true)->
 		classes = " slide "
 		#if option['slide']
 			#classes = classes + " slide"
+		if options['title']
+			classes += " titleslide "
+		if options['no-background']
+			classes += " no-background "
+		if options['two-column']
+			classes += " two-column "
+		if options['border']
+			classes += " two-column "
 		if options['class']
-			classes = classes + " " + options['class'].split(',').join(' ')
+			classes += " " + options['class'].split(',').join(' ')
 			
 		attributes = ""
 		if options['id']?
@@ -43,14 +51,21 @@ updateRender = (editMode=true)->
 	currentPresentationRenderId += 1
 	$(".render")
 		.remove()
+	renderWidth = $("#rightpane").width()
+	renderHeight = $("#rightpane").height()
 	$(".renderbase")
 		.clone()
 		.removeClass("renderbase")
 		.addClass("render")
 		.attr("id", "impress#{currentPresentationRenderId}")
+		.attr("data-screen-width", renderWidth)
+		.attr("data-screen-height", renderHeight)
 		.html(build.join(''))
 		.show()
 		.appendTo($(".renderbase").parent())
+
+	if globalOptions['no-transition']
+		$(".render").attr("data-transition-duration","0")
 
 	impressAPI = impress("impress#{currentPresentationRenderId}")
 	impressAPI.init(editMode)

@@ -1,5 +1,6 @@
 html, body {
 	height:100%;
+	overflow:hidden;
   /*padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
 }
@@ -22,18 +23,19 @@ html, body {
 	display:none;
 }
 
-.slide {
-	width: 920px;
-	height: 620px;
-	/*border: 1px solid grey;*/
-	padding: 40px;
+
+.editmode {
+	transform: scale(0.5);
+	-webkit-transform: scale(0.5);
+	-moz-transform: scale(0.5);
+	-ms-transform: scale(0.5);
+	-o-transform: scale(0.5);
 }
-.editmode .slide {
+/*.editmode .slide {
 	width: 560px;
 	height: 360px;
-	/*border: 1px solid grey;*/
 	padding: 20px;
-}
+}*/
 
 .slide {
 	width: 960px;

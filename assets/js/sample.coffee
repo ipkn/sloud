@@ -1,14 +1,18 @@
 window.sample =	"""
-:class:titleslide
+:title class:class1,class2
 
 <style>
-.titleslide h1 {
-	font-size:80px;
+.class1 h1 {
+	color:red;
+}
+.class2 h3 {
+	color:grey;
 }
 </style>
 
 # Sample slide
 ## Subtitle
+### author
 
 ---
 :class:slideborder
@@ -20,13 +24,28 @@ some contents
 테두리 있는 슬라이드
 
 ---
+:two-column
 
 # Title2
 
- - item
- - item
- - item
- - item
+ - item0
+ - item1
+ - item2
+ - item3
+ - item4
+ - item5
+ - item6
+ - item7
+ - item8
+ - item9
+ - itemA
+ - itemB
+ - itemC
+ - itemD
+ - itemE
+ - itemF
+ - itemG
+ - itemH
 
 ---
 
@@ -37,6 +56,11 @@ some contents
 or some equation:
 
 $$ \\forall x \\in X, \\quad \\exists y \\leq \\epsilon $$
+
+---
+:no-background
+
+# Some transparent
 
 ---
 :x:2048 y:2000 scale:4
