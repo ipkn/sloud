@@ -1,10 +1,22 @@
 environment = exports ? window
 
+countChar = (c, s) ->
+	count = 0
+	for ch in s
+		if c == ch
+			count += 1
+	return count
+
 environment.parse = (input)->
 	rootOptions = {}
+	lines = []
+	lineCount = 0
 
 	slides = input.split('\n---\n')
 	parsed = for slide in slides
+		lines.push(lineCount)
+		lineCount += countChar '\n', slide
+
 		options = []
 		while slide[0] == ':'
 			slide = slide.split('\n')
@@ -21,8 +33,9 @@ environment.parse = (input)->
 				else
 					options[optionKV] = true
 			slide = slide.join('\n')
+		lineCount += 2
 		#console.log "options: ", options
 		#console.log slide
 		#console.log '********************************************************************************'
 		[options, slide]
-	[rootOptions, parsed]
+	[rootOptions, parsed, lines]

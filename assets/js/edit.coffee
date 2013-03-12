@@ -1,15 +1,36 @@
 currentPresentationRenderId = 0
 markdown = new Markdown.Converter()
 impressAPI = null
+editor = null
+lines = []
+
+countChar = (c, s) ->
+	count = 0
+	for ch in s
+		if c == ch
+			count += 1
+	return count
+
+findSlideIndexByRow = (row) ->
+	for l, idx in lines
+		if row < l
+			break
+	return idx - 1
+
+followSlide = ->
+	slideIndex = findSlideIndexByRow editor.selection.getCursor().row
+	impressAPI.goto slideIndex
 
 nextSlide = ->
 	if impressAPI?
 		impressAPI.next()
+
 prevSlide = ->
 	if impressAPI?
 		impressAPI.prev()
+
 updateRender = (editMode=true)->
-	[globalOptions, slides] = window.parse($("#edit").val())
+	[globalOptions, slides, lines] = window.parse(editor.getValue())
 	build = []
 	x=0
 	y=0
@@ -78,10 +99,28 @@ updateRender = (editMode=true)->
 		.click(nextSlide)
 
 $(document).ready ->
-	fixedHeight = ($("#container").height()-100)
+	fixedHeight = ($("#container").height()-80)
+	editor = ace.edit("edit")
+	#editor.setTheme("ace/theme/monokai")
+	#editor.getSession().setMode("ace/mode/javascript")
+	$(window).resize(->
+		fixedHeight = ($("#container").height()-80)
+		$("#edit")
+			.height(fixedHeight)
+		$(".renderbase")
+			.height(fixedHeight)
+		$(".renderparent")
+			.height(fixedHeight)
+		updateRender()
+	)
+	editor.getSession().on 'change', (e)->
+		updateRender()
+	editor.getSession().selection.on 'changeCursor', (e)->
+		followSlide()
 	$("#edit")
 		.height(fixedHeight)
-		.val(window.sample)
+	editor.setValue(window.sample)
+	window.editor = editor
 	$(".renderbase")
 		.height(fixedHeight)
 	$(".renderparent")
@@ -101,8 +140,3 @@ $(document).ready ->
 				$("#rightpane").addClass('span12')
 				updateRender(true)
 				$(".render").removeClass('editmode')
-
-	$("#refreshBtn")
-		.click(->
-			updateRender()
-		)

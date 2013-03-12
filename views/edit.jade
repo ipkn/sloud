@@ -10,17 +10,17 @@ block content
 					label(class="checkbox")
 						input(id="checkpreviewmode",type="checkbox")
 						span="Preview"
-				button(id="refreshBtn", class="btn")= "Refresh"
 				button(class="btn disabled")= "Load from Dropbox ..."
 		div(class="container-fluid")
 			div(class="row-fluid")
 				#leftpane(class="span5")
-					textarea(id="edit", class="edit")
+					div(id="edit", class="edit span5")
 				#rightpane(class="span7 renderparent")
 					#slideNavButtons
 						button(id="prevSlide", class="btn")= "Prev"
 						button(id="nextSlide", class="btn")= "Next"
 					div(class="renderbase editmode")
+	script(src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js", type="text/javascript", charset="utf-8")
 	!=js("Markdown.Converter.js")
 	!=js('parser.js')
 	!=js('sample.js')
