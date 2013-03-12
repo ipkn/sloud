@@ -1,5 +1,5 @@
 .render {
-  font: 16px "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+  font: 16px "Lucida Grande", "Trebuchet MS", Verdana, "Malgun gothic", sans-serif;
   padding: 0;
   margin: 0;
   background: #778;
@@ -141,22 +141,6 @@ footer {
   padding: 5px 0;
 }
 
-pre {
-  text-align: left;
-  /*font-family: 'Droid Sans Mono', Courier;*/
-  padding: 10px 20px;
-  background: rgba(255, 0, 0, 0.05);
-  -webkit-border-radius: 8px;
-  -khtml-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 0, 0, 0.2);
-}
-
-pre select {
-  font-family: Monaco, Courier;
-  border: 1px solid #c61800;
-}
 
 .two-column {
   -webkit-column-count: 2;
